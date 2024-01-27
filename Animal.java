@@ -5,24 +5,16 @@ public class Animal {
     private String habitat;
     private String makeSound;
 
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String getName() {
         return name;
-    }
-
-    public String getMakeSound() {
-        return makeSound;
-    }
-
-    public void setMakeSound(String makeSound) {
-        this.makeSound = makeSound;
-    }
-
-    public String getHabitat() {
-        return habitat;
-    }
-
-    public void setHabitat(String habitat) {
-        this.habitat = habitat;
     }
 
     public void setName(String name) {
@@ -37,11 +29,23 @@ public class Animal {
         this.age = age;
     }
 
-    public String getType() {
-        return type;
+    public String getHabitat() {
+        return habitat;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setHabitat(String habitat) {
+        this.habitat = habitat;
+    }
+
+    public String getMakeSound() {
+        return makeSound;
+    }
+
+    public void setMakeSound(String makeSound) {
+        this.makeSound = makeSound;
+    }
+
+    public void makeSound() {
+        System.out.println("  "); //empty
     }
 }
