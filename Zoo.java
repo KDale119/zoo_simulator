@@ -3,6 +3,12 @@ import java.util.Scanner;
 public class Zoo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        Lion lion = null;
+        Elephant elephant = null;
+        Giraffe giraffe = null;
+        int lionCount = 0;
+        int elephantCount = 0;
+        int giraffeCount = 0;
 
         System.out.println("Welcome to the Zoo Simulator!\n");
         while(true) {
@@ -13,20 +19,13 @@ public class Zoo {
         System.out.print("Please enter your choice: ");
         String userInput = scanner.nextLine();
 
-        Lion lion = null;
-        Elephant elephant = null;
-        Giraffe giraffe = null;
-
-        int lionCount = 0;
-        int elephantCount = 0;
-        int giraffeCount = 0;
-
 
             if (userInput.equals("1")) {
                 System.out.print("Enter the type of animal (Lion, Elephant or Giraffe): ");
                 userInput = scanner.nextLine();
                 if (userInput.equalsIgnoreCase("lion")) {
                     lion = addLion(scanner, "Lion");
+                    lion.setType("Lion");
                     lionCount++;
                 } else if (userInput.equalsIgnoreCase("Elephant")) {
                     elephant = addElephant(scanner, "Elephant");
@@ -37,7 +36,6 @@ public class Zoo {
                     giraffe.setType("Giraffe");
                     giraffeCount++;
                 }
-//                System.out.println(lion.getType()); returns null
             }
             if (userInput.equals("2")) {
                 remove(scanner, lion, giraffe, elephant);
@@ -46,7 +44,6 @@ public class Zoo {
             if (userInput.equals("3")) {
                 System.out.println("Simulating a day at the zoo ");
                 simulate(lion, elephant, giraffe, scanner);
-                System.out.println(lion.getType());
 
             }
             if (userInput.equals("4")) {
@@ -54,10 +51,7 @@ public class Zoo {
                 break;
 
             }
-//            System.out.println(lion.getType());
-
         }
-
     }
         private static Lion addLion(Scanner scanner, String animalType){
             Lion lion = new Lion();
@@ -77,6 +71,7 @@ public class Zoo {
 
         private static Elephant addElephant(Scanner scanner, String animalType){
             Elephant elephant = new Elephant();
+
             System.out.print("Enter the " + animalType + "'s name: ");
             elephant.setName(scanner.nextLine());
 
@@ -88,10 +83,13 @@ public class Zoo {
             elephant.setHabitat(scanner.nextLine());
 
             System.out.println(elephant.getName() + " has been added to the zoo\n");
+
             return elephant;
         }
+
         private static Giraffe addGiraffe(Scanner scanner, String animalType){
             Giraffe giraffe = new Giraffe();
+
             System.out.print("Enter the " + animalType + "'s name: ");
             giraffe.setName(scanner.nextLine());
 
@@ -112,13 +110,16 @@ public class Zoo {
             if(request.equalsIgnoreCase(lion.getType())) {
                 System.out.println(lion.getName() + " in habitat: " + lion.getHabitat());
                 lion.eat();
+                lion.makeSound();
             } else if (request.equalsIgnoreCase("elephant")){
                 System.out.println(elephant.getName() + " in habitat: " + elephant.getHabitat());
                 elephant.eat();
                 elephant.drink();
+                elephant.makeSound();
             } else if (request.equalsIgnoreCase("giraffe")) {
                 System.out.println(giraffe.getName() + " in habitat: " + giraffe.getHabitat());
                 giraffe.eat();
+                giraffe.makeSound();
             }
 
         }
@@ -126,13 +127,19 @@ public class Zoo {
         public static void remove(Scanner scanner, Lion lion, Giraffe giraffe, Elephant elephant) {
             System.out.println("Enter the name of the animal you want to remove: ");
             String removeAnimal = scanner.nextLine();
+
             if (removeAnimal.equalsIgnoreCase(lion.getName())) {
-                int lionCount = 0;
-                lionCount--; // doesnt work on its own ChangeE
+                System.out.println(removeAnimal + " has been removed from the zoo.\n");
+
+            } else if (removeAnimal.equalsIgnoreCase(elephant.getName())) {
+                System.out.println(removeAnimal + " has been removed from the zoo.\n");
+
+
             } else if (removeAnimal.equalsIgnoreCase(giraffe.getName())) {
-                int giraffeCount = 0;
+                System.out.println(removeAnimal + " has been removed from the zoo.\n");
+
             } else {
-                int elephantCount = 0;
+                System.out.println("We dont have an animal by that name\n");
             }
         }
 

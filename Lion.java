@@ -1,7 +1,7 @@
 public class Lion extends Animal implements FeedingBehavior{
 
     public void makeSound() {
-        System.out.println("The lion roars loudly.");
+        System.out.println("The lion roars loudly.\n");
     }
 
     @Override

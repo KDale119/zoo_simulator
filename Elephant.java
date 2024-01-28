@@ -1,6 +1,6 @@
 public class Elephant extends Animal implements FeedingBehavior{
     public void makeSound() {
-        System.out.println("The elephant trumpets with its trunk.");
+        System.out.println("The elephant trumpets with its trunk.\n");
     }
 
     @Override
@@ -10,6 +10,6 @@ public class Elephant extends Animal implements FeedingBehavior{
 
     @Override
     public void drink() {
-        System.out.println("the elephant drink water with it's trunk");
+        System.out.println("the elephant drinks water with it's trunk");
     }
 }
