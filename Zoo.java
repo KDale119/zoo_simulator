@@ -27,25 +27,26 @@ public class Zoo {
                 userInput = scanner.nextLine();
                 if (userInput.equalsIgnoreCase("lion")) {
                     lion = addLion(scanner, "Lion");
-//                    lionCount++;
+                    lionCount++;
                 } else if (userInput.equalsIgnoreCase("Elephant")) {
                     elephant = addElephant(scanner, "Elephant");
-//                    elephantCount++;
+                    elephant.setType("Elephant");
+                    elephantCount++;
                 } else if (userInput.equalsIgnoreCase("Giraffe")) {
                     giraffe = addGiraffe(scanner, "Giraffe");
-//                    giraffeCount++;
-
+                    giraffe.setType("Giraffe");
+                    giraffeCount++;
                 }
+//                System.out.println(lion.getType()); returns null
             }
             if (userInput.equals("2")) {
-                System.out.println("Enter the name of the animal you want to remove: ");
-                String removeAnimal = scanner.nextLine();
-                System.out.println(removeAnimal + " has been removed\n");
+                remove(scanner, lion, giraffe, elephant);
 
             }
             if (userInput.equals("3")) {
                 System.out.println("Simulating a day at the zoo ");
                 simulate(lion, elephant, giraffe, scanner);
+                System.out.println(lion.getType());
 
             }
             if (userInput.equals("4")) {
@@ -53,12 +54,14 @@ public class Zoo {
                 break;
 
             }
+//            System.out.println(lion.getType());
 
         }
 
     }
         private static Lion addLion(Scanner scanner, String animalType){
             Lion lion = new Lion();
+
             System.out.print("Enter the " + animalType + "'s name: ");
             lion.setName(scanner.nextLine());
 
@@ -71,6 +74,7 @@ public class Zoo {
             System.out.println(lion.getName() + " has been added to the zoo\n");
             return lion;
         }
+
         private static Elephant addElephant(Scanner scanner, String animalType){
             Elephant elephant = new Elephant();
             System.out.print("Enter the " + animalType + "'s name: ");
@@ -103,23 +107,34 @@ public class Zoo {
         }
 
         private static void simulate(Lion lion, Elephant elephant, Giraffe giraffe, Scanner scanner) {
-            System.out.println("Select your animal (Lion, Elephant or Giraffe): ");
+            System.out.print("Select your animal (Lion, Elephant or Giraffe): ");
             String request = scanner.nextLine();
-            if(request.equalsIgnoreCase("lion")) {
+            if(request.equalsIgnoreCase(lion.getType())) {
                 System.out.println(lion.getName() + " in habitat: " + lion.getHabitat());
                 lion.eat();
             } else if (request.equalsIgnoreCase("elephant")){
                 System.out.println(elephant.getName() + " in habitat: " + elephant.getHabitat());
                 elephant.eat();
+                elephant.drink();
             } else if (request.equalsIgnoreCase("giraffe")) {
                 System.out.println(giraffe.getName() + " in habitat: " + giraffe.getHabitat());
                 giraffe.eat();
             }
 
-
         }
 
-
+        public static void remove(Scanner scanner, Lion lion, Giraffe giraffe, Elephant elephant) {
+            System.out.println("Enter the name of the animal you want to remove: ");
+            String removeAnimal = scanner.nextLine();
+            if (removeAnimal.equalsIgnoreCase(lion.getName())) {
+                int lionCount = 0;
+                lionCount--; // doesnt work on its own ChangeE
+            } else if (removeAnimal.equalsIgnoreCase(giraffe.getName())) {
+                int giraffeCount = 0;
+            } else {
+                int elephantCount = 0;
+            }
+        }
 
     }
 

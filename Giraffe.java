@@ -9,4 +9,9 @@ public class Giraffe extends Animal implements FeedingBehavior{
     public void eat() {
         System.out.println("The giraffe munches on alfalfa");
     }
+
+    @Override
+    public void drink() {
+
+    }
 }

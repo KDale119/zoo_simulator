@@ -8,4 +8,9 @@ public class Lion extends Animal implements FeedingBehavior{
     public void eat() {
         System.out.println("The lion chews on a bone");
     }
+
+    @Override
+    public void drink() {
+
+    }
 }

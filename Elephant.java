@@ -6,6 +6,10 @@ public class Elephant extends Animal implements FeedingBehavior{
     @Override
     public void eat() {
         System.out.println("The elephant eats leaves and grass");
+    }
+
+    @Override
+    public void drink() {
         System.out.println("the elephant drink water with it's trunk");
     }
 }
